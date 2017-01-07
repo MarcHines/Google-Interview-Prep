@@ -8,44 +8,36 @@ public class GooglePrep {
     public static void main(String[] args) {
         int arr[] = {50,75,85,94};
         String result = ranges(arr);
-        
+      
         System.out.println(result);
     }
-    
-//The Solution Method
-    public static String ranges(int arr[]){
-       //We want to sort our input array, so that our ranges will be in the correct order. We will hold our 'ranges' in an array of SB's
+  
+//Takes array and returns a String representation of the ranges of numbers not in the array; where the range is 0 < Range < stoppingPoint
+    public static String ranges(int arr[], int stoppingPoint){
         Arrays.sort(arr);
-        StringBuilder stringB[] = new StringBuilder[arr.length + 1];
+        StringBuilder[] ranges = new StringBuilder[arr.length + 1];
         
-        for(int i = 0; i < arr.length; i++){
-          StringBuilder sb = new StringBuilder();
-          
-         //The beginning will always start @ 0 and end at the first indexes value - 1
-          int  start = 0;
-          int  end = arr[i] - 1;
+        for(int index = 0; index < arr.length; index++){
+            StringBuilder sb = new StringBuilder();
+            int  start = 0;
+            int  end = arr[index] - 1;
        
-         //If we are not longer at the beginning, then the start of the range is always the last indexes value + 1, and we end at current index value - 1
-          if(i > 0){
-           start = arr[i - 1] + 1;
-           end = arr[i] - 1;
-          }
-         //We build our result as object and store them in an array.
-          sb.append(start).append("-").append(end);
-          stringB[i] = sb;
+            if(index > 0){
+             start = arr[index - 1] + 1;
+             end = arr[index] - 1;
+            }
           
-         //Once we are at the end of our array, the the range always ends at 100, and starts at the last indexs value + 1 
-          if(i == arr.length -1)
-            stringB[arr.length] = new StringBuilder().append(arr[i] + 1).append("-").append(100);
-        }
-        
+            ranges[index] =  sb.append(start).append("-").append(end);
+          
+            if(index == arr.length - 1)
+              ranges[arr.length] = new StringBuilder().append(arr[index] + 1).append("-").append(stoppingPoint); 
+          
+          }//End of loop
+      
         StringBuilder result =  new StringBuilder();
-        
-       //Now we can build our result by appending each element in the array together, and seperating by a comma.
-        for(StringBuilder s : stringB)
+        for(StringBuilder s : ranges)
           result.append(s).append(",");
        
-       //We just need to delete the last ',' from our String before we return so that we can have the desired result  
         return new String(result.deleteCharAt(result.length() - 1 ));
   }
 }
