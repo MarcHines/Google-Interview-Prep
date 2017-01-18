@@ -10,7 +10,7 @@ the basic idea is to maintain two queues, the first one stores all nodes with va
 and the second queue stores all the rest nodes. Then concat these two queues. 
 */
 
-    public ListNode partition(Node head, int x) {
+    public Node partition(Node head, int x) {
      if(head == null || head.next == null) return head;
     
      Node lessThan = new Node(-999);
