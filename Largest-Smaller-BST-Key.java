@@ -9,7 +9,6 @@ the biggest key that is smaller than x is 17.
 
 public static int findLargestSmallerThan(Node root, int k){
        int result = Integer.MIN_VALUE;
-       
        while(root != null){
          if(root.value < k){
            result = root.value;
@@ -17,8 +16,18 @@ public static int findLargestSmallerThan(Node root, int k){
          }else{
            root = root.leftChild;
          }
-       
        }
        return result;
+   }
+    
+/*WE CAN ALSO DO THIS RECURSIVELY */
+
+public static int findLargestSmallerKeyR(Node root, int key, int result){
+     if(root == null) return result;
+     if(root.value < key){
+       result = root.value;
+       return findLargestSmallerKeyR(root.rightChild, key, result);
+     }
+      return  findLargestSmallerKeyR(root.leftChild, key, result);
    }
     
