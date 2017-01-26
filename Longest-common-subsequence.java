@@ -2,7 +2,6 @@
 
 
 public class lcs {
-
     public static int find(char[] A, char[] B) {
         //Create a 2 2D Array with the sizes or rows being length of A + 1, and cols being length of B + 2
 	
@@ -14,13 +13,11 @@ public class lcs {
 	    // LCS[0][i] = 0;
 	    solution[0][i] = "0";
 	 }
-
 	    for (int i = 0; i <= A.length; i++) {
 	//LCS[i][0] = 0;
 	    solution[i][0] = "0";
 	}
-
-	    //We nest two for loops since we have 2D arrays. Starting both at 1 and ending at length of first string, then length of 2nd string
+	//We nest two for loops since we have 2D arrays. Starting both at 1 and ending at length of first string, then length of 2nd string
 	for (int i = 1; i <= A.length; i++) {
 	    for (int j = 1; j <= B.length; j++) { //There are TWO cases : 1 both indexs are equal, or 2. they are not equal
 	     //FIRST CASE: We set the LCS[i][j] Equal to 1 minus its indexes, and then add 1 to the total. Set the marker in solution array[i]j]to Diagnoal
