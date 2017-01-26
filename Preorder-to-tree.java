@@ -1,4 +1,56 @@
 /*
+
+
+    Exam­ple: int[] pre­Order = { 20, 10, 5, 1, 7, 15, 30, 25, 35, 32, 40 };
+    Use Stack.
+    First ele­ment in the pre­order[] will def­i­nitely be the root, which is 20 here.
+    Cre­ate a node with data 20 and push it in Stack.
+    Now take the next ele­ment (say ‘data’) from the pre­order sequence.
+    If ‘data’ is greater than the top item in the stack then keep pop­ping out the nodes from the stack, keep stor­ing it in temp node till the top node in stack is less than the ‘data’.
+    cre­ate a node with ‘data’ and add it to the right of temp node and push the temp node to stack.
+    If ‘data’ is less than the top item in the stack then cre­ate a node with ‘data’ and add it to the left of top node in stack and push it in the stack.
+    Repeat the above two steps till all the ele­ments in pre­order[] is over.
+    return the root
+
+
+*/
+
+
+public Node constructTree(int[] preorder) {
+  Stack<Node> s = new Stack<Node>();
+  Node root = new Node(preorder[0]);
+  s.add(root);
+  
+  for (int i = 1; i < preorder.length; i++) {
+    Node x = null;
+	  
+    while (!s.isEmpty() && preorder[i] > s.peek().data) {
+      x = s.pop();
+     }
+     
+     if (x != null) {
+       x.right = new Node(preorder[i]);
+       s.push(x.right);
+     } else {
+       s.peek().left = new Node(preorder[i]);
+       s.push(s.peek().left);
+     }
+    }
+     return root;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+/*  RECURSIVE SOLUTION. IT"S UGLY IN MY OPINION
 o the idea is Pass the min­i­mum and max­i­mum val­ues between which the node’s value must lie.
 
     Exam­ple: int[] pre­Order = { 20, 10, 5, 1, 7, 15, 30, 25, 35, 32, 40 };
