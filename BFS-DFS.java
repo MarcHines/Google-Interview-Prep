@@ -19,6 +19,7 @@ public void BFS(Vertex orgin){
         for(Vertex v : realvertex.getNeighbors()){
           if(!v.isVisited())
               v.setVisited();
+              v.setPrevious(); //FOR SHORTEST PATH
               queue.add(v);
         }
       }
