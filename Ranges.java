@@ -1,6 +1,7 @@
 /*
   Given an array of numbers, return a single String of comma seperated range of numbers not inside of the array. 
   ie. INPUT: Array[50,75]   OUTPUT: "0-49,51-74,76-100";
+-----------------------------
 */
 
 import java.util.*;
