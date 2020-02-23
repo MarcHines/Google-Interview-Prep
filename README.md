@@ -1,2 +1,2 @@
 # Google-Interview-Prep
-Running through some Google Glassdoor problems to prep for upcoming interview!
+These were all problems I solved in preperation for an interview I had with Google. 
